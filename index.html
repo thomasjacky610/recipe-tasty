@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasty Kitchen Recipes</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#f5f5f5;
+line-height:1.6;
+}
+
+header{
+background:#ff6b35;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+nav{
+background:#222;
+padding:12px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.hero{
+background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+url('https://images.unsplash.com/photo-1498837167922-ddd27525d352');
+
+background-size: cover;
+background-position: center;
+color: white;
+padding: 120px 20px;
+text-align: center;
+}
+
+.hero p{
+font-size: 28px;
+}
+
+section{
+max-width:1100px;
+margin:auto;
+padding:40px;
+background:white;
+margin-top:20px;
+border-radius:8px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+margin-top:35px;
+}
+
+.card{
+background:#fff;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 12px 25px rgba(0,0,0,0.15);
+}
+
+.card img{
+width:100%;
+height:230px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h3{
+margin-top:0;
+font-size:22px;
+}
+
+.card-content p{
+color:#555;
+line-height:1.6;
+}
+
+@media(max-width:700px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:30px;
+}
+
+.recipe-images{
+display:flex;
+gap:10px;
+margin:20px 0;
+}
+
+.recipe-images img{
+width:25%;
+height:180px;
+object-fit:cover;
+border-radius:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Tasty Kitchen Recipes</h1>
+<p>Simple & Delicious American Recipes</p>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="recipes.html">Recipes</a>
+<a href="terms.html">Terms</a>
+<a href="contact-us.html">Contact</a>
+<a href="privacy.html">Privacy Policy</a>
+</nav>
+
+<div class="hero">
+<h1>Discover Aazing Homemade Recipes</h1>
+<p>Explore breakfast, lunch, dinner and dessert recipes loved across America.</p>
+</div>
+
+
+<section>
+
+<h2>About Our Recipe Website</h2>
+
+<p>
+Welcome to Tasty Kitchen Recipes, a complete destination for food lovers who enjoy cooking delicious meals at home. Our website is dedicated to sharing authentic American recipes that are simple, flavorful, and easy to prepare for everyone. Whether you are a beginner learning how to cook or an experienced home chef searching for new meal ideas, our platform provides a wide collection of recipes designed to make cooking enjoyable and stress-free.
+</p>
+
+<div class="recipe-images">
+    <img src="https://images.unsplash.com/photo-1587735243615-c03f25aaff15" alt="Recipe Image 1">
+    <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb" alt="Recipe Image 2">
+    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e" alt="Recipe Image 3">
+    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Recipe Image 4">
+</div>
+
+<p>
+At Tasty Kitchen Recipes, we believe that great food brings people together. Every recipe published on this website is carefully selected to ensure it is practical, easy to follow, and made using ingredients that are commonly available in grocery stores. From classic American breakfast dishes like pancakes and waffles to comforting dinner meals such as pasta, burgers, and roasted chicken, we aim to inspire people to cook more homemade meals.
+</p>
+
+<p>
+Our goal is to help families prepare healthy and satisfying meals without spending too much time in the kitchen. We regularly share cooking tips, kitchen guides, and step-by-step instructions that make the cooking process easier. Whether you want to prepare a quick weekday dinner, a special weekend meal, or a delicious dessert for celebrations, you will always find helpful inspiration on our website.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Recipe Categories</h2>
+
+<p>
+Our recipe collection is organized into multiple categories to make it easier for visitors to find the perfect dish for any time of the day. Whether you are planning a nutritious breakfast, a quick lunch during a busy workday, or a comforting dinner for your family, our categories will guide you to the right recipes. We also feature delicious desserts and sweet treats that are perfect for holidays, birthdays, and special occasions.
+</p>
+
+</section>
+
+
+<section>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0">
+<div class="card-content">
+<h3>Breakfast</h3>
+<p>Pancakes, waffles, omelettes, smoothies and more breakfast ideas.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c">
+<div class="card-content">
+<h3>Lunch</h3>
+<p>Quick lunch meals including sandwiches, salads and pasta.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352">
+<div class="card-content">
+<h3>Dinner</h3>
+<p>Comfort meals like grilled chicken, baked pasta and soups.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
+<div class="card-content">
+<h3>Desserts</h3>
+<p>Chocolate cake, brownies, cookies and sweet treats.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>Featured Recipes</h2>
+
+<p>
+Every week we highlight a selection of our most loved and frequently cooked recipes. These featured dishes are popular among our readers because they are simple to prepare and deliver incredible taste. Our featured recipes include classic American comfort foods, modern kitchen favorites, and delicious homemade meals that are perfect for both everyday cooking and special gatherings.
+</p>
+
+
+<div class="grid">
+
+<!-- PANCAKES -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
+<div class="card-content">
+<h3>Classic Pancakes</h3>
+<p>
+Soft fluffy pancakes served with maple syrup and butter. This classic American breakfast dish is easy to prepare and loved by people of all ages.
+</p>
+</div>
+</div>
+
+
+<!-- PASTA -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb">
+<div class="card-content">
+<h3>Creamy Garlic Pasta</h3>
+<p>
+A delicious creamy garlic pasta that combines rich flavors and simple ingredients. Perfect for quick dinners and comforting homemade meals.
+</p>
+</div>
+</div>
+
+
+<!-- CHOCOLATE CAKE -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+<div class="card-content">
+<h3>Chocolate Cake</h3>
+<p>
+Moist chocolate cake topped with smooth chocolate frosting. A perfect dessert recipe for birthdays, celebrations, or sweet cravings.
+</p>
+</div>
+</div>
+
+
+<!-- BURGER -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+<div class="card-content">
+<h3>Classic Cheeseburger</h3>
+<p>
+Juicy grilled cheeseburger layered with fresh lettuce, tomatoes, and melted cheese. A delicious American comfort food loved worldwide.
+</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>Popular Recipes</h2>
+
+<p>
+Some recipes become favorites in almost every household because of their incredible flavor and easy preparation. In this section, you will find popular recipes that are widely enjoyed across the United States. From juicy cheeseburgers and homemade pizzas to crispy fried chicken and flavorful pasta dishes, these meals represent the heart of American comfort food. If you are looking for dishes that everyone will enjoy, this section is a great place to start exploring new cooking ideas.
+</p>
+
+<div class="grid">
+
+<!-- Cheeseburger -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+<div class="card-content">
+<h3>Cheeseburger</h3>
+<p>Juicy grilled cheeseburger layered with fresh lettuce, tomato, and melted cheddar cheese served in a toasted bun.</p>
+</div>
+</div>
+
+<!-- Pizza -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38">
+<div class="card-content">
+<h3>Pizza</h3>
+<p>Homemade pizza topped with rich tomato sauce, melted mozzarella cheese, and fresh herbs for authentic flavor.</p>
+</div>
+</div>
+
+<!-- Fried Chicken -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58">
+<div class="card-content">
+<h3>Fried Chicken</h3>
+<p>Crispy golden fried chicken with a crunchy coating and tender juicy meat inside, a classic American favorite.</p>
+</div>
+</div>
+
+<!-- Pasta -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb">
+<div class="card-content">
+<h3>Creamy Pasta</h3>
+<p>Rich and creamy pasta cooked with garlic, butter, and cheese creating a comforting and satisfying dinner dish.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>Essential Cooking Equipment</h2>
+
+<p>
+Cooking becomes much easier and more enjoyable when you have the right tools in your kitchen. While you do not need expensive equipment to prepare delicious meals, having a few essential cooking tools can greatly improve your efficiency and results. Basic items such as a good frying pan, sharp kitchen knife, mixing bowls, and measuring cups allow you to prepare recipes accurately and safely.
+</p>
+
+<p>
+Many of our recipes are designed for home kitchens and require only simple equipment that most households already have. Whether you are baking desserts, frying breakfast dishes, or preparing hearty dinner meals, the right cooking tools can help you save time and achieve better flavors in your food. Investing in good kitchen equipment also makes the cooking process more enjoyable and helps beginners gain confidence in the kitchen.
+</p>
+
+<ul>
+
+<li>Non-stick frying pan</li>
+<li>Sharp kitchen knife</li>
+<li>Mixing bowls</li>
+<li>Baking tray</li>
+<li>Measuring cups</li>
+<li>Cutting board</li>
+
+</ul>
+
+</section>
+
+
+
+<section>
+
+<h2>Latest Food Blog</h2>
+
+<p>
+In addition to our recipe collection, we regularly publish helpful food blogs and cooking guides to help our readers improve their culinary skills. Our blog articles cover topics such as cooking tips, ingredient guides, healthy meal preparation, and quick recipes for busy lifestyles. These articles are written to help beginners understand cooking techniques while also providing useful insights for experienced home cooks.
+</p>
+
+<p>
+If you enjoy learning about food, experimenting with new ingredients, and discovering creative ways to prepare meals, our blog section will provide valuable knowledge and inspiration. We encourage visitors to explore our latest posts to stay updated with new recipes, seasonal cooking ideas, and helpful kitchen advice.
+</p>
+
+<div class="grid">
+
+<!-- BLOG 1 -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
+<div class="card-content">
+<h3>How to Make Perfect Pancakes</h3>
+<p>Learn simple tips and techniques to cook soft, fluffy pancakes that turn out perfect every time.</p>
+</div>
+</div>
+
+<!-- BLOG 2 -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061">
+<div class="card-content">
+<h3>Healthy Cooking Tips</h3>
+<p>Discover easy ways to prepare healthier meals while maintaining delicious flavors and balanced nutrition.</p>
+</div>
+</div>
+
+<!-- BLOG 3 -->
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
+<div class="card-content">
+<h3>Quick Dinner Ideas</h3>
+<p>Explore easy dinner recipes that you can prepare in under 30 minutes without sacrificing taste.</p>
+</div>
+</div>
+
+<!-- BLOG 4 -->
+
+<div class="card">
+<img src="https://images.ctfassets.net/uw7yiu2kuigc/6zFB8BSPqHXHIUKMyYOzmE/fb9e8ec80179161b7ac731ab0f5098b0/Article-15-Essential-Kitchen-Tools-Lead.jpg?fit=crop&w=910&h=700&f=top">
+<div class="card-content">
+<h3>Essential Kitchen Tools</h3>
+<p>Learn about the must-have kitchen tools that make cooking easier, faster, and more enjoyable.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>Why Choose Our Recipes</h2>
+
+<p>
+There are thousands of recipe websites available online, but our goal is to provide a cooking experience that is simple, practical, and enjoyable for everyone. We focus on creating recipes that are easy to understand, reliable, and suitable for everyday home cooking. Our recipes are tested to ensure that they deliver great flavor while using ingredients that are easily available in supermarkets.
+</p>
+
+<p>
+Whether you are preparing meals for yourself, your family, or your friends, our recipes are designed to make cooking easier while still delivering delicious results. We aim to build a community of food lovers who enjoy exploring new recipes and sharing homemade meals with the people they care about.
+</p>
+
+<div class="grid">
+
+<div class="card">
+    <div class="card-content">
+<h3>Easy Instructions</h3>
+<p>Step-by-step cooking instructions for beginners.</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content">
+<h3>Simple Ingredients</h3>
+<p>Recipes made with everyday ingredients available everywhere.</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content">
+<h3>Family Friendly</h3>
+<p>Meals loved by both kids and adults.</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-content">
+<h3>Wide Variety</h3>
+<p>Hundreds of recipes from breakfast to desserts.</p>
+    </div>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>Subscribe for New Recipes</h2>
+
+<p>
+If you enjoy cooking and discovering new recipes, consider subscribing to our newsletter. By joining our mailing list, you will receive regular updates about newly published recipes, seasonal cooking ideas, and helpful kitchen tips directly in your inbox. Our goal is to keep our readers inspired with fresh meal ideas that they can easily prepare at home.
+</p>
+
+<p>
+Subscribing is completely free and allows you to stay connected with the latest food trends and delicious recipe collections. Whether you are looking for quick weekday meals or impressive dishes for special occasions, our newsletter will keep you updated with the best cooking inspiration from our kitchen.
+</p>
+
+<input type="email" placeholder="Enter your email" style="padding:10px;width:250px;">
+<button style="padding:10px;background:#ff6b35;color:white;border:none;">Subscribe</button>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Tasty Kitchen Recipes</p>
+
+<p>
+<a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a> | <a href="disclaimer.html">Disclaimer</a>
+</p>
+
+</footer>
+
+</body>
+</html>

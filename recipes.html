@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature Recipes - Tasty Kitchen Recipes</title>
+
+<style>
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Georgia, serif;
+  margin: 0;
+  background: #f5f5f5;
+  line-height: 1.7;
+  color: #333;
+}
+
+header {
+  background: #ff6b35;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 { margin: 0; font-size: 32px; }
+header p { margin: 5px 0 0; font-size: 16px; }
+
+nav {
+  background: #222;
+  padding: 12px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+nav a:hover { color: #ff6b35; }
+
+/* PAGE HERO */
+.page-hero {
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.page-hero h1 { font-size: 46px; margin: 0 0 15px; }
+.page-hero p { font-size: 20px; max-width: 700px; margin: auto; }
+
+/* SECTIONS */
+section {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 8px;
+}
+
+section h2 {
+  font-size: 30px;
+  color: #222;
+  border-left: 5px solid #ff6b35;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+section h3 { color: #ff6b35; font-size: 22px; margin-top: 0; }
+
+/* INTRO BANNER */
+.intro-banner {
+  background: #fff7f3;
+  border: 1px solid #ffd5c0;
+  border-radius: 8px;
+  padding: 25px 30px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #444;
+}
+
+/* RECIPE CARD GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+@media(max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .page-hero h1 { font-size: 30px; }
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+.card-content { padding: 22px; }
+.card-content h3 { font-size: 20px; color: #222; margin-bottom: 8px; }
+.card-content p { color: #555; font-size: 15px; margin: 0 0 12px; }
+
+.badge {
+  display: inline-block;
+  background: #ff6b35;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  margin-right: 6px;
+  margin-bottom: 10px;
+}
+
+.badge.green { background: #4caf50; }
+.badge.blue { background: #2196f3; }
+.badge.purple { background: #9c27b0; }
+
+/* FULL RECIPE BLOCK */
+.recipe-block {
+  background: #fffaf7;
+  border: 1px solid #ffe0cc;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.recipe-block img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.recipe-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+}
+
+.recipe-meta span {
+  background: #f0f0f0;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 30px;
+}
+
+@media(max-width: 700px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+.ingredients-list {
+  background: white;
+  border-radius: 8px;
+  padding: 20px 25px;
+  border: 1px solid #eee;
+}
+
+.ingredients-list h4 {
+  color: #ff6b35;
+  margin-top: 0;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+}
+
+.ingredients-list ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.ingredients-list li {
+  margin-bottom: 8px;
+  color: #444;
+  font-size: 15px;
+}
+
+.steps-list h4 {
+  color: #ff6b35;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  margin-top: 0;
+}
+
+.step {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+
+.step-num {
+  background: #ff6b35;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  min-width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.step p { margin: 0; color: #444; font-size: 15px; }
+
+/* TIPS BOX */
+.tips-box {
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #2e7d32;
+}
+
+.tips-box strong { display: block; margin-bottom: 6px; font-size: 16px; }
+
+/* NUTRITION TABLE */
+.nutrition-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.nutrition-table th {
+  background: #ff6b35;
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.nutrition-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid #eee;
+  color: #444;
+}
+
+.nutrition-table tr:nth-child(even) td { background: #fff7f3; }
+
+/* QUOTE */
+.recipe-quote {
+  font-size: 20px;
+  font-style: italic;
+  color: #ff6b35;
+  border-left: 4px solid #ff6b35;
+  padding: 12px 20px;
+  margin: 25px 0;
+  background: #fff7f3;
+  border-radius: 0 8px 8px 0;
+}
+
+/* CATEGORY STRIP */
+.category-strip {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.cat-pill {
+  background: #222;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cat-pill:hover, .cat-pill.active { background: #ff6b35; }
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 2px dashed #ffd5c0;
+  margin: 40px 0;
+}
+
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+footer a { color: #ff6b35; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Tasty Kitchen Recipes</h1>
+  <p>Simple & Delicious American Recipes</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="recipes.html">Recipes</a>
+  <a href="terms.html">Terms</a>
+  <a href="contact-us.html">Contact</a>
+  <a href="privacy.html">Privacy Policy</a>
+</nav>
+
+<div class="page-hero">
+  <h1>Our Signature Recipes</h1>
+  <p>A handpicked collection of the most beloved, tested, and delicious homemade recipes from the Tasty Kitchen kitchen.</p>
+</div>
+
+
+<!-- INTRO -->
+<section>
+  <h2>Welcome to Our Recipe Collection</h2>
+  <div class="intro-banner">
+    Welcome to the heart of Tasty Kitchen Recipes. This page brings together our most treasured and frequently cooked signature recipes — all of which have been carefully tested, refined, and loved by home cooks across the country. Whether you are in the mood for a warm and comforting breakfast, a hearty family dinner, a quick lunch, or an indulgent dessert, you will find the perfect recipe right here. Every dish on this page is designed to be simple enough for beginners yet satisfying enough for experienced home chefs. We invite you to explore, cook, and enjoy each of these wonderful meals.
+  </div>
+
+  <div class="category-strip">
+    <div class="cat-pill active">All Recipes</div>
+    <div class="cat-pill">Breakfast</div>
+    <div class="cat-pill">Lunch</div>
+    <div class="cat-pill">Dinner</div>
+    <div class="cat-pill">Desserts</div>
+    <div class="cat-pill">Quick Meals</div>
+    <div class="cat-pill">Vegetarian</div>
+  </div>
+
+  <p>
+    Our signature recipe collection features a wide variety of dishes ranging from classic American comfort food to modern kitchen favorites. Each recipe comes with a complete list of ingredients, detailed step-by-step cooking instructions, helpful cooking tips, and nutritional information so you can make informed decisions about what you eat. We update our recipe collection regularly to bring you fresh ideas and seasonal inspiration throughout the year.
+  </p>
+  <p>
+    At Tasty Kitchen Recipes, we believe that cooking at home should be a joyful and rewarding experience. Good food does not have to be complicated. With the right recipe, a few fresh ingredients, and some basic cooking skills, anyone can prepare meals that taste incredible and make the whole family smile. Start exploring our signature recipes below and find your next favorite dish.
+  </p>
+</section>
+
+
+<!-- RECIPE OVERVIEW CARDS -->
+<section>
+  <h2>Browse All Signature Recipes</h2>
+  <p>
+    Below you will find a complete overview of all our signature recipes organized for easy browsing. Click on any recipe that catches your eye to jump directly to the full recipe details, ingredients, and cooking instructions. Each recipe has been rated by our readers and tested multiple times to ensure consistent, delicious results every time you cook it.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93" alt="Classic Fluffy Pancakes">
+      <div class="card-content">
+        <span class="badge">Breakfast</span>
+        <span class="badge green">Easy</span>
+        <h3>Classic Fluffy Pancakes</h3>
+        <p>Golden, soft, and perfectly fluffy pancakes made from scratch using simple pantry ingredients. Served with warm maple syrup, fresh berries, and a generous pat of butter, this is the ultimate American breakfast that the whole family will request every weekend morning.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb" alt="Creamy Garlic Pasta">
+      <div class="card-content">
+        <span class="badge blue">Dinner</span>
+        <span class="badge green">Easy</span>
+        <h3>Creamy Garlic Pasta</h3>
+        <p>A rich and velvety pasta dish made with roasted garlic, butter, heavy cream, and Parmesan cheese. This quick and satisfying dinner comes together in under 30 minutes and delivers restaurant-quality flavor with minimal effort. Perfect for busy weeknights.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" alt="Classic Cheeseburger">
+      <div class="card-content">
+        <span class="badge blue">Lunch</span>
+        <span class="badge" style="background:#e65100;">Medium</span>
+        <h3>Classic American Cheeseburger</h3>
+        <p>A juicy, perfectly seasoned beef patty topped with melted cheddar cheese, crispy lettuce, ripe tomatoes, pickles, and creamy burger sauce — all stacked inside a toasted brioche bun. This homemade cheeseburger rivals any restaurant version and is a true crowd-pleaser.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Chocolate Fudge Cake">
+      <div class="card-content">
+        <span class="badge purple">Dessert</span>
+        <span class="badge" style="background:#e65100;">Medium</span>
+        <h3>Rich Chocolate Fudge Cake</h3>
+        <p>An incredibly moist and decadent chocolate cake layered with smooth dark chocolate ganache frosting. This showstopper dessert is perfect for birthdays, celebrations, and any occasion that calls for something truly special and unforgettable.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58" alt="Crispy Fried Chicken">
+      <div class="card-content">
+        <span class="badge blue">Dinner</span>
+        <span class="badge" style="background:#e65100;">Medium</span>
+        <h3>Southern Crispy Fried Chicken</h3>
+        <p>Buttermilk-marinated chicken pieces coated in a perfectly seasoned, golden crispy crust. Fried to perfection, this Southern-style fried chicken has a satisfying crunch on the outside and juicy, tender meat on the inside. A timeless American comfort food classic.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Homemade Pizza">
+      <div class="card-content">
+        <span class="badge blue">Dinner</span>
+        <span class="badge" style="background:#e65100;">Medium</span>
+        <h3>Homemade Margherita Pizza</h3>
+        <p>A classic Margherita pizza made on a hand-stretched dough base spread with rich tomato sauce, topped with fresh mozzarella cheese and fragrant basil leaves. Baked at high heat until the crust is perfectly crisp and the cheese is beautifully melted and bubbly.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061" alt="Avocado Toast">
+      <div class="card-content">
+        <span class="badge">Breakfast</span>
+        <span class="badge green">Easy</span>
+        <h3>Loaded Avocado Toast</h3>
+        <p>Thick slices of toasted sourdough bread topped with creamy mashed avocado, a perfectly poached egg, cherry tomatoes, microgreens, and a drizzle of chili oil. This modern breakfast classic is nutritious, filling, and incredibly delicious.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b" alt="Banana Pudding">
+      <div class="card-content">
+        <span class="badge purple">Dessert</span>
+        <span class="badge green">Easy</span>
+        <h3>Classic Banana Pudding</h3>
+        <p>A beloved Southern dessert made with layers of creamy vanilla pudding, fresh banana slices, and crispy vanilla wafer cookies, all topped with a generous cloud of whipped cream. This no-bake dessert is perfect for potlucks, family gatherings, and any sweet occasion.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FULL RECIPE 1: PANCAKES -->
+<section>
+  <h2>Recipe 1: Classic Fluffy Pancakes</h2>
+
+  <div class="recipe-block">
+    <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93" alt="Classic Fluffy Pancakes">
+
+    <p>
+      There is nothing quite like waking up on a lazy weekend morning to the smell of freshly made pancakes sizzling on the griddle. This Classic Fluffy Pancake recipe has been a staple in American households for generations and for very good reason. Made entirely from simple pantry ingredients, these pancakes are light, airy, golden on the outside, and wonderfully soft on the inside. The secret to their fluffiness lies in the combination of baking powder and a slightly thick batter that traps air bubbles during cooking. Whether you enjoy them plain with maple syrup or stacked high with fresh strawberries, blueberries, and whipped cream, these pancakes are guaranteed to make any morning feel special.
+    </p>
+
+    <div class="recipe-meta">
+      <span>⏱ Prep Time: 10 mins</span>
+      <span>🍳 Cook Time: 20 mins</span>
+      <span>🍽 Servings: 4 people</span>
+      <span>⭐ Difficulty: Easy</span>
+      <span>🍴 Category: Breakfast</span>
+    </div>
+
+    <div class="recipe-quote">
+      "The best mornings start with a stack of warm, buttery pancakes and a generous pour of real maple syrup."
+    </div>
+
+    <div class="two-col">
+      <div class="ingredients-list">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1 and ½ cups all-purpose flour</li>
+          <li>2 tablespoons white granulated sugar</li>
+          <li>2 teaspoons baking powder</li>
+          <li>½ teaspoon baking soda</li>
+          <li>¼ teaspoon fine salt</li>
+          <li>1 cup buttermilk (or regular milk)</li>
+          <li>1 large egg, beaten</li>
+          <li>2 tablespoons unsalted butter, melted</li>
+          <li>1 teaspoon pure vanilla extract</li>
+          <li>Butter or cooking spray for the pan</li>
+          <li>Maple syrup and fresh berries to serve</li>
+        </ul>
+      </div>
+      <div class="steps-list">
+        <h4>Step-by-Step Instructions</h4>
+        <div class="step"><div class="step-num">1</div><p>In a large mixing bowl, whisk together the flour, sugar, baking powder, baking soda, and salt until well combined. Make a well in the center of the dry ingredients.</p></div>
+        <div class="step"><div class="step-num">2</div><p>In a separate bowl, whisk together the buttermilk, beaten egg, melted butter, and vanilla extract until smooth and fully combined.</p></div>
+        <div class="step"><div class="step-num">3</div><p>Pour the wet ingredients into the well of the dry ingredients. Gently fold together using a spatula or wooden spoon. Be careful not to overmix — a few lumps in the batter are completely fine and actually help create fluffier pancakes.</p></div>
+        <div class="step"><div class="step-num">4</div><p>Let the batter rest for 5 minutes at room temperature. This resting period allows the baking powder to activate and helps produce lighter, airier pancakes.</p></div>
+        <div class="step"><div class="step-num">5</div><p>Heat a non-stick skillet or griddle over medium heat. Lightly grease with butter or cooking spray. Pour approximately ¼ cup of batter per pancake onto the hot surface.</p></div>
+        <div class="step"><div class="step-num">6</div><p>Cook until bubbles form and pop on the surface and the edges look set, about 2 to 3 minutes. Flip and cook the other side for another 1 to 2 minutes until golden brown.</p></div>
+        <div class="step"><div class="step-num">7</div><p>Serve immediately stacked on a warm plate with maple syrup, fresh berries, and a dollop of whipped cream or a pat of butter.</p></div>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <strong>💡 Pro Tips for Perfect Pancakes</strong>
+      Do not overmix your batter — lumps are your friend. Use buttermilk for extra fluffiness and a subtle tangy flavor. If your pancakes are browning too fast, lower the heat slightly. You can also add blueberries, chocolate chips, or sliced bananas directly to the batter for delicious variations. Leftover pancakes can be refrigerated and reheated in a toaster the next morning.
+    </div>
+
+    <h4 style="margin-top:25px; font-family:Arial,sans-serif; color:#333;">Nutritional Information (per serving)</h4>
+    <table class="nutrition-table">
+      <tr><th>Nutrient</th><th>Amount</th></tr>
+      <tr><td>Calories</td><td>290 kcal</td></tr>
+      <tr><td>Carbohydrates</td><td>42g</td></tr>
+      <tr><td>Protein</td><td>8g</td></tr>
+      <tr><td>Fat</td><td>9g</td></tr>
+      <tr><td>Sugar</td><td>8g</td></tr>
+      <tr><td>Fiber</td><td>1g</td></tr>
+    </table>
+  </div>
+</section>
+
+
+<!-- FULL RECIPE 2: CREAMY GARLIC PASTA -->
+<section>
+  <h2>Recipe 2: Creamy Garlic Pasta</h2>
+
+  <div class="recipe-block">
+    <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb" alt="Creamy Garlic Pasta">
+
+    <p>
+      When it comes to quick, comforting, and deeply satisfying weeknight dinners, few dishes can match the irresistible appeal of a perfectly made Creamy Garlic Pasta. This recipe takes the humble pasta to extraordinary heights by coating every strand in a luscious, velvety sauce made from roasted garlic, rich heavy cream, real butter, and freshly grated Parmesan cheese. The entire dish comes together in just under 30 minutes using one pot, making it one of the most practical and crowd-pleasing dinner recipes in our collection. It is the kind of meal that tastes like it took hours to prepare but is actually incredibly simple. Served with a light salad and some crusty garlic bread, this pasta creates a complete and satisfying dinner that the whole family will absolutely love.
+    </p>
+
+    <div class="recipe-meta">
+      <span>⏱ Prep Time: 8 mins</span>
+      <span>🍳 Cook Time: 20 mins</span>
+      <span>🍽 Servings: 4 people</span>
+      <span>⭐ Difficulty: Easy</span>
+      <span>🍴 Category: Dinner</span>
+    </div>
+
+    <div class="two-col">
+      <div class="ingredients-list">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>400g spaghetti or fettuccine pasta</li>
+          <li>6 large cloves of garlic, minced</li>
+          <li>3 tablespoons unsalted butter</li>
+          <li>1 tablespoon olive oil</li>
+          <li>1 cup heavy cream</li>
+          <li>¾ cup freshly grated Parmesan cheese</li>
+          <li>½ cup pasta cooking water (reserved)</li>
+          <li>Salt and black pepper to taste</li>
+          <li>½ teaspoon red chili flakes (optional)</li>
+          <li>Fresh parsley, chopped, to garnish</li>
+          <li>Extra Parmesan for serving</li>
+        </ul>
+      </div>
+      <div class="steps-list">
+        <h4>Step-by-Step Instructions</h4>
+        <div class="step"><div class="step-num">1</div><p>Bring a large pot of generously salted water to a boil. Cook the pasta according to package instructions until al dente. Before draining, reserve about half a cup of the starchy pasta cooking water — this will help thicken and emulsify your sauce later.</p></div>
+        <div class="step"><div class="step-num">2</div><p>In a large deep skillet or sauté pan, heat the butter and olive oil together over medium-low heat. Once the butter has melted, add the minced garlic and cook gently, stirring often, for about 2 to 3 minutes until fragrant and very lightly golden. Do not let the garlic burn.</p></div>
+        <div class="step"><div class="step-num">3</div><p>Pour in the heavy cream and stir to combine with the garlic butter. Allow the cream to come to a gentle simmer over medium heat. Let it cook and reduce slightly for about 4 to 5 minutes, stirring occasionally.</p></div>
+        <div class="step"><div class="step-num">4</div><p>Add the grated Parmesan cheese and stir continuously until the cheese is fully melted and the sauce is smooth and creamy. Season generously with salt and black pepper. Add chili flakes if you enjoy a little heat.</p></div>
+        <div class="step"><div class="step-num">5</div><p>Add the drained pasta directly to the skillet with the cream sauce. Toss well to coat every strand evenly. Add splashes of the reserved pasta water as needed to loosen the sauce to your preferred consistency.</p></div>
+        <div class="step"><div class="step-num">6</div><p>Plate the pasta in warm bowls, garnish with freshly chopped parsley and an extra generous grating of Parmesan. Serve immediately with garlic bread and a simple green salad.</p></div>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <strong>💡 Pro Tips for the Creamiest Pasta</strong>
+      Always use freshly grated Parmesan rather than pre-packaged — it melts much better and gives a superior flavor. Make sure to reserve your pasta water before draining, as the starch content is essential for creating a silky, well-emulsified sauce. For a protein-packed version, add grilled chicken breast, sautéed shrimp, or crispy bacon to the dish.
+    </div>
+
+    <h4 style="margin-top:25px; font-family:Arial,sans-serif; color:#333;">Nutritional Information (per serving)</h4>
+    <table class="nutrition-table">
+      <tr><th>Nutrient</th><th>Amount</th></tr>
+      <tr><td>Calories</td><td>620 kcal</td></tr>
+      <tr><td>Carbohydrates</td><td>68g</td></tr>
+      <tr><td>Protein</td><td>18g</td></tr>
+      <tr><td>Fat</td><td>30g</td></tr>
+      <tr><td>Sugar</td><td>3g</td></tr>
+      <tr><td>Fiber</td><td>3g</td></tr>
+    </table>
+  </div>
+</section>
+
+
+<!-- FULL RECIPE 3: CHEESEBURGER -->
+<section>
+  <h2>Recipe 3: Classic American Cheeseburger</h2>
+
+  <div class="recipe-block">
+    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd" alt="Classic American Cheeseburger">
+
+    <p>
+      The Classic American Cheeseburger is perhaps the most iconic and beloved dish in the history of American cuisine. There is something truly magical about biting into a perfectly cooked, juicy beef patty smothered in melted cheddar cheese, layered with crisp fresh vegetables, and nestled inside a soft, toasted brioche bun. This homemade cheeseburger recipe delivers everything you love about a great burger — a flavorful, well-seasoned patty that is charred on the outside yet pink and juicy on the inside, combined with the freshness of lettuce and tomato, the tang of pickles, and the creaminess of a special homemade burger sauce. Once you make burgers this way at home, you will never feel the need to visit a fast food restaurant again.
+    </p>
+
+    <div class="recipe-meta">
+      <span>⏱ Prep Time: 15 mins</span>
+      <span>🍳 Cook Time: 15 mins</span>
+      <span>🍽 Servings: 4 burgers</span>
+      <span>⭐ Difficulty: Medium</span>
+      <span>🍴 Category: Lunch / Dinner</span>
+    </div>
+
+    <div class="two-col">
+      <div class="ingredients-list">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>500g 80/20 ground beef</li>
+          <li>1 teaspoon garlic powder</li>
+          <li>1 teaspoon onion powder</li>
+          <li>Salt and black pepper to taste</li>
+          <li>4 slices cheddar cheese</li>
+          <li>4 brioche burger buns</li>
+          <li>4 large lettuce leaves</li>
+          <li>2 ripe tomatoes, sliced</li>
+          <li>Sliced dill pickles</li>
+          <li>½ red onion, thinly sliced</li>
+          <li>4 tablespoons mayonnaise</li>
+          <li>1 tablespoon ketchup</li>
+          <li>1 teaspoon yellow mustard</li>
+          <li>Butter for toasting buns</li>
+        </ul>
+      </div>
+      <div class="steps-list">
+        <h4>Step-by-Step Instructions</h4>
+        <div class="step"><div class="step-num">1</div><p>Make the burger sauce by combining the mayonnaise, ketchup, and mustard in a small bowl. Mix well and set aside in the refrigerator. This simple sauce adds amazing flavor and brings all the toppings together.</p></div>
+        <div class="step"><div class="step-num">2</div><p>Divide the ground beef into four equal portions. Shape each portion into a round patty about ¾ inch thick. Press a slight dimple in the center of each patty using your thumb — this prevents the burger from puffing up during cooking. Season both sides generously with salt, pepper, garlic powder, and onion powder.</p></div>
+        <div class="step"><div class="step-num">3</div><p>Heat a cast iron skillet or grill pan over high heat until very hot. Place the patties on the hot surface and cook without pressing them for 3 to 4 minutes per side for a medium cook. In the last 1 minute of cooking, place a slice of cheddar cheese on each patty and cover the pan to melt the cheese.</p></div>
+        <div class="step"><div class="step-num">4</div><p>While the burgers cook, butter the cut sides of the brioche buns and toast them in a separate pan over medium heat until golden and crispy.</p></div>
+        <div class="step"><div class="step-num">5</div><p>Spread the burger sauce generously on both halves of the toasted buns. Layer the bottom bun with lettuce, then a tomato slice, then the cheesy beef patty, followed by pickles and red onion slices. Place the top bun over everything and serve immediately with fries.</p></div>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <strong>💡 Pro Tips for the Perfect Burger</strong>
+      Use 80/20 ground beef — the 20 percent fat content is what keeps the patty juicy and flavorful. Never press down on the patty while cooking as this squeezes out all the delicious juices. Rest the cooked patties on a plate for 2 minutes before assembling to allow the juices to redistribute. For the best results, cook burgers on a very hot cast iron pan or outdoor grill.
+    </div>
+  </div>
+</section>
+
+
+<!-- FULL RECIPE 4: CHOCOLATE CAKE -->
+<section>
+  <h2>Recipe 4: Rich Chocolate Fudge Cake</h2>
+
+  <div class="recipe-block">
+    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Chocolate Fudge Cake">
+
+    <p>
+      If there is one recipe that deserves the title of ultimate showstopper dessert, it is this Rich Chocolate Fudge Cake. Made with real cocoa powder and dark chocolate, this cake is intensely chocolatey, perfectly moist, and absolutely irresistible. The secret to its incredible texture lies in the addition of hot coffee to the batter — it deepens the chocolate flavor dramatically without making the cake taste like coffee at all. Frosted with a luxuriously smooth and glossy dark chocolate ganache, every slice of this cake is a celebration of everything wonderful about chocolate desserts. This is the cake you make for birthdays, anniversaries, and any occasion that deserves something truly extraordinary.
+    </p>
+
+    <div class="recipe-meta">
+      <span>⏱ Prep Time: 25 mins</span>
+      <span>🍳 Bake Time: 35 mins</span>
+      <span>🍽 Servings: 12 slices</span>
+      <span>⭐ Difficulty: Medium</span>
+      <span>🍴 Category: Dessert</span>
+    </div>
+
+    <div class="two-col">
+      <div class="ingredients-list">
+        <h4>Ingredients — Cake</h4>
+        <ul>
+          <li>2 cups all-purpose flour</li>
+          <li>2 cups white sugar</li>
+          <li>¾ cup unsweetened cocoa powder</li>
+          <li>2 teaspoons baking soda</li>
+          <li>1 teaspoon baking powder</li>
+          <li>½ teaspoon fine salt</li>
+          <li>2 large eggs</li>
+          <li>1 cup buttermilk</li>
+          <li>1 cup hot strong black coffee</li>
+          <li>½ cup vegetable oil</li>
+          <li>2 teaspoons vanilla extract</li>
+        </ul>
+        <h4 style="margin-top:18px; color:#ff6b35;">Ingredients — Ganache Frosting</h4>
+        <ul>
+          <li>200g dark chocolate, chopped</li>
+          <li>200ml heavy cream</li>
+          <li>2 tablespoons unsalted butter</li>
+          <li>2 tablespoons powdered sugar</li>
+        </ul>
+      </div>
+      <div class="steps-list">
+        <h4>Step-by-Step Instructions</h4>
+        <div class="step"><div class="step-num">1</div><p>Preheat your oven to 175°C (350°F). Grease two 9-inch round cake pans and line the bottoms with parchment paper. Lightly flour the sides of the pans to prevent sticking.</p></div>
+        <div class="step"><div class="step-num">2</div><p>In a large bowl, sift together the flour, sugar, cocoa powder, baking soda, baking powder, and salt. Whisk to combine all the dry ingredients evenly.</p></div>
+        <div class="step"><div class="step-num">3</div><p>In another bowl, whisk together the eggs, buttermilk, hot coffee, oil, and vanilla extract until well blended. The batter will be quite thin — this is completely normal and is what creates the moist texture.</p></div>
+        <div class="step"><div class="step-num">4</div><p>Gradually pour the wet ingredients into the dry ingredients, whisking gently until the batter is smooth and lump-free. Divide the batter evenly between the two prepared cake pans.</p></div>
+        <div class="step"><div class="step-num">5</div><p>Bake in the preheated oven for 32 to 36 minutes, or until a toothpick inserted into the center of the cakes comes out clean. Cool the cakes in their pans for 15 minutes before turning out onto a wire rack to cool completely.</p></div>
+        <div class="step"><div class="step-num">6</div><p>For the ganache, heat the heavy cream in a small saucepan until it just begins to simmer. Pour it over the chopped chocolate and butter in a bowl. Let it sit for 2 minutes, then stir until perfectly smooth. Add powdered sugar and stir. Let the ganache cool to a spreadable consistency.</p></div>
+        <div class="step"><div class="step-num">7</div><p>Place one cake layer on a serving plate and spread a generous layer of ganache on top. Place the second cake layer on top and frost the entire cake with the remaining ganache. Decorate with chocolate shavings or fresh berries if desired. Refrigerate for 30 minutes before slicing.</p></div>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <strong>💡 Pro Tips for the Best Chocolate Cake</strong>
+      Use the best quality cocoa powder and dark chocolate you can find — it makes a significant difference in flavor. Do not skip the hot coffee in the batter; it intensifies the chocolate taste without adding a coffee flavor. Make sure both cake layers are completely cooled before applying ganache, otherwise it will melt and slide off. This cake keeps well in the refrigerator for up to 5 days.
+    </div>
+  </div>
+</section>
+
+
+<!-- FULL RECIPE 5: FRIED CHICKEN -->
+<section>
+  <h2>Recipe 5: Southern Crispy Fried Chicken</h2>
+
+  <div class="recipe-block">
+    <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58" alt="Southern Crispy Fried Chicken">
+
+    <p>
+      Southern Crispy Fried Chicken is one of the most celebrated dishes in all of American cuisine, and once you learn how to make it properly at home, you will understand exactly why. The key to truly exceptional fried chicken lies in the buttermilk marinade — soaking the chicken pieces overnight in seasoned buttermilk tenderizes the meat, adds incredible flavor, and helps the coating adhere beautifully during frying. The result is chicken with an extraordinarily crispy, deeply seasoned golden crust and meat that is juicy, tender, and absolutely delicious all the way to the bone. This recipe takes a little planning but delivers results that are far superior to anything you can buy at a restaurant.
+    </p>
+
+    <div class="recipe-meta">
+      <span>⏱ Prep Time: 20 mins + overnight</span>
+      <span>🍳 Cook Time: 30 mins</span>
+      <span>🍽 Servings: 4 people</span>
+      <span>⭐ Difficulty: Medium</span>
+      <span>🍴 Category: Dinner</span>
+    </div>
+
+    <div class="two-col">
+      <div class="ingredients-list">
+        <h4>Ingredients</h4>
+        <ul>
+          <li>1 whole chicken, cut into 8 pieces</li>
+          <li>2 cups buttermilk</li>
+          <li>1 tablespoon hot sauce</li>
+          <li>2 cups all-purpose flour</li>
+          <li>1 teaspoon garlic powder</li>
+          <li>1 teaspoon onion powder</li>
+          <li>1 teaspoon smoked paprika</li>
+          <li>1 teaspoon dried oregano</li>
+          <li>½ teaspoon cayenne pepper</li>
+          <li>Salt and black pepper to taste</li>
+          <li>Vegetable oil for frying</li>
+        </ul>
+      </div>
+      <div class="steps-list">
+        <h4>Step-by-Step Instructions</h4>
+        <div class="step"><div class="step-num">1</div><p>Mix the buttermilk, hot sauce, salt, and pepper in a large bowl. Add the chicken pieces, making sure they are fully submerged in the marinade. Cover with plastic wrap and refrigerate for at least 8 hours or overnight. This is the most important step for maximum tenderness and flavor.</p></div>
+        <div class="step"><div class="step-num">2</div><p>In a large shallow dish, combine the flour, garlic powder, onion powder, smoked paprika, oregano, cayenne, salt, and pepper. Mix thoroughly to distribute all the spices evenly throughout the coating mixture.</p></div>
+        <div class="step"><div class="step-num">3</div><p>Remove each chicken piece from the buttermilk marinade and let the excess drip off. Dredge each piece thoroughly in the seasoned flour, pressing firmly to ensure the coating sticks completely. Shake off any loose excess flour.</p></div>
+        <div class="step"><div class="step-num">4</div><p>Heat 3 inches of vegetable oil in a deep heavy-bottomed pot or Dutch oven to 175°C (350°F). Use a kitchen thermometer for accuracy. Maintaining the correct oil temperature is crucial for crispy, non-greasy fried chicken.</p></div>
+        <div class="step"><div class="step-num">5</div><p>Fry the chicken in batches of 3 to 4 pieces at a time, never overcrowding the pot. Cook each piece for 12 to 15 minutes total, turning once halfway through, until deeply golden and the internal temperature reaches 75°C (165°F).</p></div>
+        <div class="step"><div class="step-num">6</div><p>Transfer the fried chicken to a wire rack set over a baking sheet to drain. Never drain on paper towels as this creates steam and softens the crust. Serve hot with coleslaw, mashed potatoes, and honey for dipping.</p></div>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <strong>💡 Pro Tips for Extra Crispy Fried Chicken</strong>
+      Never skip the overnight buttermilk soak — it is what separates good fried chicken from truly outstanding fried chicken. Double dredging (dipping back in buttermilk and coating again) creates an even thicker, crunchier crust. Always allow your oil to return to temperature between batches. For extra crispiness, add 2 tablespoons of cornstarch to your flour coating mixture.
+    </div>
+  </div>
+</section>
+
+
+<!-- EXTRA CONTENT: COOKING TIPS + FAQ -->
+<section>
+  <h2>Essential Tips for Home Cooking Success</h2>
+  <p>
+    Becoming a confident home cook is not about mastering complicated techniques or owning expensive equipment. It is about understanding a few fundamental principles that apply to almost every recipe you will ever make. The tips below have been gathered from years of cooking experience and will help you improve the quality of every dish you prepare in your home kitchen.
+  </p>
+  <hr class="divider">
+
+  <h3>1. Always Read the Entire Recipe Before You Start</h3>
+  <p>
+    One of the most common mistakes beginner cooks make is jumping straight into a recipe without reading it from start to finish. Before you begin cooking anything, take 5 minutes to read the entire recipe. This allows you to understand the full process, identify any steps that require advance preparation such as marinating or chilling, and ensure you have all the necessary ingredients and equipment ready before you begin. Knowing what comes next helps you cook more confidently and prevents mistakes that could ruin the dish.
+  </p>
+
+  <h3>2. Mise en Place — Prepare Everything Before Cooking</h3>
+  <p>
+    Mise en place is a French culinary term that simply means "everything in its place." Before you turn on the heat, measure all your ingredients, peel and chop all your vegetables, and have every component of the recipe ready and waiting. This practice makes cooking faster, less stressful, and significantly reduces the chance of forgetting an ingredient or burning something while you search the pantry for a spice. Professional chefs swear by this habit, and it will transform your home cooking experience dramatically.
+  </p>
+
+  <h3>3. Season Throughout the Cooking Process</h3>
+  <p>
+    Proper seasoning is the difference between food that tastes flat and food that tastes incredible. Do not wait until the very end of cooking to add salt and pepper. Season your ingredients at each stage of the cooking process — while sautéing vegetables, after adding liquids, and again just before serving. Tasting as you cook allows you to adjust the seasoning gradually and build layers of flavor that cannot be achieved by simply seasoning at the end.
+  </p>
+
+  <h3>4. Control Your Heat</h3>
+  <p>
+    Understanding when to use high, medium, and low heat is one of the most valuable skills in cooking. High heat is great for searing meats and achieving a beautiful crust. Medium heat is ideal for sautéing vegetables and making sauces. Low heat is essential for slow-cooking, simmering soups, and melting chocolate without burning. Many beginner cooks use heat that is too high, which leads to burning, uneven cooking, and tough, dry proteins. Learning to manage your stove temperature will immediately improve the quality of your food.
+  </p>
+
+  <h3>5. Let Meat Rest Before Cutting</h3>
+  <p>
+    One of the biggest mistakes people make when cooking meat is cutting into it immediately after it comes off the heat. Always allow cooked meat to rest on a cutting board for several minutes before slicing. During resting, the juices that have been pushed to the center of the meat by the heat redistribute evenly throughout the entire cut. If you cut meat too soon, all those flavorful juices will simply run out onto the cutting board and your meat will be dry and less flavorful. A general rule is to rest small cuts like chicken breasts and burgers for 5 minutes, and larger roasts for 15 to 20 minutes.
+  </p>
+
+  <hr class="divider">
+
+  <h2>Frequently Asked Questions About Our Recipes</h2>
+
+  <h3>Can I substitute buttermilk in recipes?</h3>
+  <p>
+    Yes, absolutely. If you do not have buttermilk on hand, you can make a simple substitute by adding one tablespoon of white vinegar or fresh lemon juice to one cup of regular whole milk. Stir briefly and let it sit for 5 minutes before using. The mixture will curdle slightly and will function almost identically to real buttermilk in most recipes, including pancakes, cakes, and fried chicken marinades.
+  </p>
+
+  <h3>How do I know when oil is hot enough for frying?</h3>
+  <p>
+    The most accurate way to check oil temperature is with a kitchen thermometer. For most deep frying, you want the oil to be between 170°C and 180°C. If you do not have a thermometer, you can test the oil by inserting the end of a wooden spoon — if bubbles form rapidly around the wood, the oil is ready. Alternatively, drop a small pinch of flour into the oil; it should sizzle immediately.
+  </p>
+
+  <h3>Can these recipes be made ahead of time?</h3>
+  <p>
+    Many of our recipes are excellent for meal prepping and making ahead. The Chocolate Fudge Cake actually tastes better on the second day as the flavors continue to develop. Pasta sauces, burger patties, and fried chicken coating can all be prepared in advance and stored properly in the refrigerator. We recommend checking each individual recipe for specific storage instructions and reheating tips.
+  </p>
+
+  <h3>Are these recipes suitable for beginners?</h3>
+  <p>
+    Yes, all of our signature recipes have been designed with home cooks of all skill levels in mind. We have labeled each recipe with a difficulty level — Easy, Medium, or Advanced — so you can choose dishes that match your current skill level and gradually work your way up to more complex recipes as your confidence grows. Every recipe includes clear, detailed step-by-step instructions written in plain language without any confusing culinary jargon.
+  </p>
+</section>
+
+
+<!-- NEWSLETTER -->
+<section>
+  <h2>Get New Recipes Delivered to Your Inbox</h2>
+  <p>
+    Never miss a new recipe from our kitchen. Subscribe to the Tasty Kitchen Recipes newsletter and receive our latest signature recipes, seasonal meal ideas, cooking tips, and kitchen guides delivered straight to your email inbox every week. Our newsletter is completely free and you can unsubscribe at any time.
+  </p>
+  <p>
+    Join thousands of home cooks who are already cooking better, eating well, and discovering new favorite recipes thanks to Tasty Kitchen Recipes. We promise to send you only the best and most useful content — no spam, no clutter, just great food inspiration.
+  </p>
+  <div style="margin-top:20px;">
+    <input type="email" placeholder="Enter your email address" style="padding:12px 15px; width:280px; border:1px solid #ddd; border-radius:5px; font-size:15px; margin-right:8px;">
+    <button style="padding:12px 24px; background:#ff6b35; color:white; border:none; border-radius:5px; font-size:15px; cursor:pointer; font-weight:bold;">Subscribe Free</button>
+  </div>
+</section>
+
+
+<footer>
+  <p>© 2026 Tasty Kitchen Recipes — All Rights Reserved</p>
+  <p>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="recipes.html">Recipes</a> |
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms</a> |
+    <a href="disclaimer.html">Disclaimer</a> |
+    <a href="contact-us.html">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>
